@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -77,4 +78,27 @@ public class JpaTest {
 		
 	}
 	
+	@Test
+	public void testFetchLastXmessages() throws Exception {
+		User user = userRepository.save(User.builder().name("userName").build());
+		Room room = roomRepository.save(Room.builder().name("roomName").build());
+		insertMessage(room,user,"msg1");
+		insertMessage(room,user,"msg2");
+		insertMessage(room,user,"msg3");
+		
+		List<ChatMessage> messages = chatMessageRepository.findMostRecent(room.getId(),2);
+		assertThat(messages.size(),equalTo(2));
+		assertThat(messages.get(0).getMessage(),equalTo("msg3"));
+		assertThat(messages.get(1).getMessage(),equalTo("msg2"));
+	}
+
+	private void insertMessage(Room room, User user, String text) {
+		chatMessageRepository.save(
+				ChatMessage.builder()
+					.message(text)
+					.room(room)
+					.user(user)
+					.build()
+				);
+	}
 }
