@@ -1,0 +1,24 @@
+# Use root/example as user/password credentials
+# docker run -it --net="host" mysql mysql -h 127.0.0.1 -P 43306 -u user1 -ppassword1 
+
+version: '2.0'
+
+services:
+
+  db:
+    image: mysql:5.7.24
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: testdb
+      MYSQL_USER: user1
+      MYSQL_PASSWORD: pass1
+    ports:
+      - 43306:3306  
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 48080:8080
+
