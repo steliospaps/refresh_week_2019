@@ -1,11 +1,13 @@
 CREATE TABLE user (
        id bigint primary key auto_increment not null,
-       name varchar(50) not null
+       name varchar(50) not null,
+       unique(name)
 );
 
 CREATE TABLE room (
        id bigint primary key auto_increment not null,
-       name varchar(50) not null
+       name varchar(50) not null,
+       unique(name)
 );
 
 CREATE TABLE chat_message (
