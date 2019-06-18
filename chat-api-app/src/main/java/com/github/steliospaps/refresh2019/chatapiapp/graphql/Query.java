@@ -1,5 +1,7 @@
 package com.github.steliospaps.refresh2019.chatapiapp.graphql;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,11 @@ public class Query implements GraphQLQueryResolver{
 		return roomRepository.findAll();
 	}	
 
+	public Optional<Room> getRoom(Long id) {
+		return roomRepository.findById(id);
+	}	
+
+	
 	public Iterable<User> getAllUsers() {
 		return userRepository.findAll();
 	}	

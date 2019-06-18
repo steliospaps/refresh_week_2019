@@ -1,17 +1,27 @@
 type Query {
     getAllRooms: [Room]
     getAllUsers: [User]
-    
+    getRoom(id:ID!): Room
 }
 
 type Mutation {
 	createRoom(name: String!): Room!
 	createUser(name: String!): User!
+	createChatMessage(userId:ID!,roomId:ID!,message: String!): ChatMessage!
+	
+}
+
+type ChatMessage {
+	id: ID!
+	message: String!
+	user: User!
+	room: Room!
 }
 
 type Room {
 	id: ID !
 	name: String !
+	chatMessages: [ChatMessage]
 }
 
 type User {
