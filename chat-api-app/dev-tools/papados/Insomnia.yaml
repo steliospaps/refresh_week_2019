@@ -1,0 +1,80 @@
+_type: export
+__export_format: 4
+__export_date: 2019-06-18T09:48:30.761Z
+__export_source: insomnia.desktop.app:v6.5.4
+resources:
+  - _id: req_118438054da54d898e19e30f52a22050
+    authentication: {}
+    body:
+      mimeType: application/graphql
+      text: '{"query":"mutation {\n  createRoom(name:\"hello\") {id,name}\n}"}'
+    created: 1560774028134
+    description: ""
+    headers:
+      - id: pair_e69108720b8348ae8567c3fa75335c9c
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1560774028134
+    method: POST
+    modified: 1560851251892
+    name: http://localhost:8080/graphql
+    parameters: []
+    parentId: wrk_3e9b5aa8f9394d42a7f77c30810374ae
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/graphql
+    _type: request
+  - _id: wrk_3e9b5aa8f9394d42a7f77c30810374ae
+    created: 1560851223763
+    description: ""
+    modified: 1560851223763
+    name: ChatAppGraphQl
+    parentId: null
+    _type: workspace
+  - _id: req_9b7968d9b8cc4bc9a7d3bac16311b07d
+    authentication: {}
+    body:
+      mimeType: application/graphql
+      text: '{"query":"query {\n  getAllRooms {\n    id,\n    name\n  }\n}"}'
+    created: 1560851107300
+    description: ""
+    headers:
+      - id: pair_e69108720b8348ae8567c3fa75335c9c
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1560774028084
+    method: POST
+    modified: 1560851265890
+    name: http://localhost:8080/graphql (Copy)
+    parameters: []
+    parentId: wrk_3e9b5aa8f9394d42a7f77c30810374ae
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/graphql
+    _type: request
+  - _id: env_60bd5e3e49f965284363e764efc2aa45ec098b43
+    color: null
+    created: 1560851223884
+    data: {}
+    dataPropertyOrder: null
+    isPrivate: false
+    metaSortKey: 1560851223884
+    modified: 1560851223884
+    name: Base Environment
+    parentId: wrk_3e9b5aa8f9394d42a7f77c30810374ae
+    _type: environment
+  - _id: jar_60bd5e3e49f965284363e764efc2aa45ec098b43
+    cookies: []
+    created: 1560851223888
+    modified: 1560851223888
+    name: Default Jar
+    parentId: wrk_3e9b5aa8f9394d42a7f77c30810374ae
+    _type: cookie_jar

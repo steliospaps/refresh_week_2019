@@ -1,0 +1,12 @@
+type Query {
+    getAllRooms: [Room]
+}
+
+type Mutation {
+	createRoom(name: String!): Room!
+}
+
+type Room {
+	id: ID !
+	name: String !
+}
