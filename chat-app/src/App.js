@@ -12,7 +12,7 @@ import Rooms from './Rooms';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:8080/graphql'
-})
+});
 
 const client = new ApolloClient({
   link: httpLink,
@@ -20,16 +20,24 @@ const client = new ApolloClient({
 });
 
 
-function App() {
-  return (
-      <div className="App">
-	<ApolloProvider client={client}>
-          <Users/>
-          <Rooms/>
-          Hello World
-        </ApolloProvider>,
-      </div>
-  );
+export default class App extends React.Component {
+    constructor(props){
+        super(props);
+        this.state={};
+    }
+    onLogin(user){
+        this.setState({user:user});
+    }
+    render() {
+        return (
+            <div className="App">
+	      <ApolloProvider client={client}>
+                <Users user={this.state.user} onLogin={this.onLogin.bind(this)}/>
+                <Rooms/>
+                Hello World
+              </ApolloProvider>,
+            </div>
+        );
+    }
 }
 
-export default App;

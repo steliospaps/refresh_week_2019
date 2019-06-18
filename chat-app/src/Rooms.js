@@ -3,7 +3,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import Room from './Room';
 
-export default class Rooms extends Component {
+export default class Rooms extends Component {        
     render() {
         return (
             <Query query={gql`query {rooms:getAllRooms{id,name}}`} >
