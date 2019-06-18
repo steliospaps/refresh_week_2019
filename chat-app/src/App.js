@@ -9,7 +9,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import Users from './Users';
 import Rooms from './Rooms';
-
+import ChatMessages from './ChatMessages';
 const httpLink = createHttpLink({
   uri: 'http://localhost:8080/graphql'
 });
@@ -34,7 +34,7 @@ export default class App extends React.Component {
 	      <ApolloProvider client={client}>
                 <Users user={this.state.user} onLogin={this.onLogin.bind(this)}/>
                 <Rooms/>
-                Hello World
+                <ChatMessages/>
               </ApolloProvider>,
             </div>
         );
