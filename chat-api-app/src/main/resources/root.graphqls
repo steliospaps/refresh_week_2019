@@ -7,7 +7,7 @@ type Query {
 type Mutation {
 	createRoom(name: String!): Room!
 	createUser(name: String!): User!
-	createChatMessage(userId:ID!,roomId:ID!,message: String!): ChatMessage!
+	createChatMessage(userId:ID!,roomId:ID!,message:String!): ChatMessage!
 	
 }
 
