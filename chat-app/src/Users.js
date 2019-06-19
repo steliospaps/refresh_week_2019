@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import User from './User';
+import UserCreator from './UserCreator.js';
 
 export default class Users extends Component {
     render() {
 	if(this.props.user == null) {
             return (
+                <div>
 		<Query query={gql`query {users:getAllUsers{id,name}}`} >
 		  {({ loading, error, data }) => {
 		      if (loading) return <div>Fetching</div>;
@@ -17,6 +19,8 @@ export default class Users extends Component {
 		      );
 		  }}
 		</Query>
+                <UserCreator/>
+                </div>
             );
 	} else {
             return (
