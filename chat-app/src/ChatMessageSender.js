@@ -25,24 +25,32 @@ export default class ChatMessageSender extends React.Component {
         const roomId=1;
         const {text} = this.state; 
         return(
-            <div>
-              <input
-                value={this.state.text}
-                type="text"
-                placeholder="chat message"
-                onChange={ e =>{this.setState({text:e.target.value});}} 
-              />
-              <Mutation mutation={CREATE_CHAT_MESSAGE}
-                        variables = {{message: text,roomId: roomId, userId:userId }}
-              >
-                {(postMutation) =>{
-                    return (
+            <Mutation mutation={CREATE_CHAT_MESSAGE}
+                      variables = {{message: text,roomId: roomId, userId:userId }}
+            >
+              {(postMutation,{loading,error}) =>{
+
+                  return (
+                      <div>                      
+                        <input
+                          value={this.state.text}
+                          type="text"
+                          disabled={loading?"disabled":""}
+                          placeholder="chat message"
+                          onChange={ e =>{this.setState({text:e.target.value});}} 
+                        />
                         <button onClick={
-                            postMutation
-                        }>Send</button>
-                    );}}
-              </Mutation>
-            </div>
+                            () =>{
+                                postMutation();
+                                this.setState({text:''});
+                            }
+                        }
+                                disabled={loading?"disabled":""}
+                        >Send</button>
+                        {error && <label>there was an error</label>}
+                      </div>
+                  );}}
+            </Mutation>
         );
     }
 }

@@ -12,6 +12,8 @@ import com.github.steliospaps.refresh2019.chatapiapp.chat.db.RoomRepository;
 import com.github.steliospaps.refresh2019.chatapiapp.chat.db.User;
 import com.github.steliospaps.refresh2019.chatapiapp.chat.db.UserRepository;
 
+import lombok.SneakyThrows;
+
 @Service
 public class Mutation implements GraphQLMutationResolver {
 
@@ -38,7 +40,10 @@ public class Mutation implements GraphQLMutationResolver {
 						.build());
 	}
 
+	@SneakyThrows
 	public ChatMessage createChatMessage(Long userId,Long roomId,String message) {
+		//Thread.sleep(5000L); //uncomment to test latency
+		//if(true) throw new RuntimeException("error"); //uncomment to test errors
 		return chatMessageRepository
 				.save(ChatMessage.builder()
 						.message(message)
