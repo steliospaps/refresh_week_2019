@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import ChatMessage from './ChatMessage';
+import './ChatMessages.css';
 
 export default class ChatMessages extends Component {
     render() {
@@ -12,7 +13,7 @@ export default class ChatMessages extends Component {
 		  if (error) return <div>Error</div>;
 		  
 		  return (
-		      <div>{data.room.chatMessages.map(msg => <ChatMessage key={msg.id} message={{user:msg.user.name,text:msg.message}}/>)}</div>
+		      <div className="container" >{data.room.chatMessages.map(msg => <ChatMessage key={msg.id} message={{user:msg.user.name,text:msg.message}}/>)}</div>
 		  );
 	      }}
 	    </Query>

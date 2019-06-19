@@ -1,0 +1,19 @@
+.message {
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.user {
+    flex: 1;
+    justify-content: left;
+    background-color: #808080;
+    
+}
+
+.message {
+    flex-grow: 1;
+    justify-content: left;
+    background-color: #B000B0;
+    
+}

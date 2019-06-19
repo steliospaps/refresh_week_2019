@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './ChatMessage.css';
 
 export default class ChatMessage extends Component {
     onClick(){
@@ -6,9 +7,9 @@ export default class ChatMessage extends Component {
     }
     render() {
         return (
-            <div>
-              <div>{this.props.message.user}</div>
-              <div>{this.props.message.text}</div>
+            <div className="message">
+              <div className="user">{this.props.message.user}: </div>
+              <div className="message">{this.props.message.text}</div>
             </div>
         );
     }
