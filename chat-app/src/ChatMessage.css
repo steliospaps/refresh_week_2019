@@ -7,13 +7,10 @@
 .user {
     flex: 1;
     justify-content: left;
-    background-color: #808080;
     
 }
 
 .message {
     flex-grow: 1;
-    justify-content: left;
-    background-color: #B000B0;
-    
+    justify-content: center;
 }

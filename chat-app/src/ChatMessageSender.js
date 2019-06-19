@@ -18,7 +18,7 @@ props: user:{name:,id:}
 */
 export default class ChatMessageSender extends React.Component {
     state = {
-        text:'original text'
+        text:''
     };
     render() {
         const userId=1;
