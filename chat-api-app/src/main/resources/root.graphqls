@@ -8,7 +8,14 @@ type Mutation {
 	createRoom(name: String!): Room!
 	createUser(name: String!): User!
 	createChatMessage(userId:ID!,roomId:ID!,message:String!): ChatMessage!
-	
+}
+
+type Subscription {
+    dummyUpdates(roomId:ID!) : DummyUpdate!
+}
+
+type DummyUpdate {
+    dateTime : String
 }
 
 type ChatMessage {
