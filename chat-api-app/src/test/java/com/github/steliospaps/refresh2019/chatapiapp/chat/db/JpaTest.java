@@ -11,12 +11,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
 public class JpaTest {
-
+	
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
@@ -27,6 +28,8 @@ public class JpaTest {
 	@Before
 	public void cleanup() {
 		userRepository.deleteAll();
+		roomRepository.deleteAll();
+		chatMessageRepository.deleteAll();
 	}
 	
 	@Test

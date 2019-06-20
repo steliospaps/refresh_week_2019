@@ -1,7 +1,5 @@
 package com.github.steliospaps.refresh2019.chatapiapp.graphql;
 
-import java.util.Arrays;
-
 import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
