@@ -12,6 +12,7 @@ type Mutation {
 
 type Subscription {
     dummyUpdates(roomId:ID!) : DummyUpdate!
+    newChatMessages(roomId:ID!) : ChatMessage!
 }
 
 type DummyUpdate {
