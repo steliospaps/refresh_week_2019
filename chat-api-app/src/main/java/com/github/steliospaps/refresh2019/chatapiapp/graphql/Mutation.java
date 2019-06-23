@@ -62,7 +62,7 @@ public class Mutation implements GraphQLMutationResolver,InitializingBean {
 								.findById(userId)
 								.orElseThrow())
 						.room(roomRepository
-								.findById(userId)
+								.findById(roomId)
 								.orElseThrow())
 						.build());
 		updateListeners(chatMessage);

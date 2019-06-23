@@ -21,8 +21,14 @@ export default class ChatMessageSender extends React.Component {
         text:''
     };
     render() {
-        const userId=1;
-        const roomId=1;
+        if(this.props.user == null){
+            return <label>choose user please</label>;
+        }
+        if(this.props.room == null){
+            return <label>choose room please</label>;
+        }
+        const userId=this.props.user.id;
+        const roomId=this.props.room.id;
         const {text} = this.state; 
         return(
             <Mutation mutation={CREATE_CHAT_MESSAGE}

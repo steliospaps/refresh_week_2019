@@ -58,16 +58,19 @@ export default class App extends React.Component {
     onLogin(user){
         this.setState({user:user});
     }
+    onEnterRoom(room){
+        this.setState({room:room});
+    }
     render() {
         return (
             <div className="App">
 	      <ApolloProvider client={client}>
                 <DummySubscription/>
                 <Users user={this.state.user} onLogin={this.onLogin.bind(this)}/>
-                <Rooms/>
-                <ChatMessageSender user={this.state.user} />
-                <ChatMessages/>
-              </ApolloProvider>,
+                <Rooms room={this.state.room} onEnterRoom={this.onEnterRoom.bind(this)}/>
+                <ChatMessageSender user={this.state.user} room={this.state.room} />
+                <ChatMessages room={this.state.room}/>
+              </ApolloProvider>
             </div>
         );
     }

@@ -14,12 +14,12 @@ export default class Rooms extends Component {
                     if (error) return <div>Error</div>;
                     
                     return (
-                        <div>{data.rooms.map(room => <Room key={room.id} room={room} />)}</div>
+                        <div>{data.rooms.map(room => <Room key={room.id} room={room} onEnterRoom={this.props.onEnterRoom} selected={this.props.room && this.props.room.id == room.id} />)}</div>
                     );
                 }}
               </Query>
               <RoomCreator/>
             </div>
         );
-  }
+    }
 }

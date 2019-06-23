@@ -29,7 +29,7 @@ class StreamingComponent extends React.Component {
         this.props.subscribeToNewMessages();
     }
     render(){
-        console.log("StreamingComponent render data="+JSON.stringify(this.props.data));
+        //        console.log("StreamingComponent render data="+JSON.stringify(this.props.data));
         return (
 	    <div className="container" >
               {this.props.data.messages.map(msg =>
@@ -41,9 +41,13 @@ class StreamingComponent extends React.Component {
 
 export default class ChatMessages extends Component {
     render() {
+        if(this.props.room == null){
+            return <label>choose room please</label>;
+        }
+        
         return (
 	    <Query query={QUERY_DATA}
-                   variables={{roomId:1}}
+                   variables={{roomId:this.props.room.id}}
             >
 	      {({ subscribeToMore, loading, error, data }) => {
                   if (loading) return <div>Fetching</div>;
@@ -53,17 +57,17 @@ export default class ChatMessages extends Component {
                         data={data}
                         subscribeToNewMessages={()=>subscribeToMore({
                             document: SUBSCRIBE_TO_DATA,
-                            variables: {roomId:1},
+                            variables: {roomId:this.props.room.id},
                             updateQuery: (prev,{subscriptionData})=>{
                                 if (!subscriptionData.data) return prev;
                                 const message = subscriptionData.data.message;
-                                console.log("prev count"+prev.length);
-                                console.log("prev"+JSON.stringify(prev));
+//                                console.log("prev count"+prev.length);
+//                                console.log("prev"+JSON.stringify(prev));
                                 const res = Object.assign({},
                                                      prev,
                                                      {
                                                          messages: [ message, ...prev.messages]});
-                                console.log("res"+JSON.stringify(res));
+//                                console.log("res"+JSON.stringify(res));
                                 return res;
                             }
                         })}
