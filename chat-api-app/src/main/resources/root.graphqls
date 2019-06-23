@@ -2,6 +2,7 @@ type Query {
     getAllRooms: [Room]
     getAllUsers: [User]
     getRoom(id:ID!): Room
+    getRoomMessages(roomId:ID!): [ChatMessage]
 }
 
 type Mutation {

@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './ChatMessage.css';
 
 export default class ChatMessage extends Component {
-    onClick(){
-        this.props.onLogin(this.props.user);
-    }
     render() {
         return (
             <div className="message">
