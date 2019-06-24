@@ -31,6 +31,8 @@ type Room {
 	id: ID !
 	name: String !
 	chatMessages: [ChatMessage]
+	# expensive call
+	relevance: Float! 
 }
 
 type User {

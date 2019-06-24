@@ -10,5 +10,8 @@
   docker-compose up
   ./mvnw spring-boot:run -Dspring.profiles.active=dev 
 ```
+
+the graphqli client should be avaialbe at http://localhost:8080/graphiql
+
 # testing
 https://github.com/springboot-testcontainer/springboot-testcontainer-mysql
