@@ -1,0 +1,3 @@
+script:
+  - cd chat-api-app
+  - ./mvnw clean package	
