@@ -21,8 +21,7 @@ public class KafkaConsumingRoomPublisherProvider implements RoomPublisherProvide
 	private Flowable<Room> observable= subject.serialize().share().toFlowable(BackpressureStrategy.BUFFER);
 
 	@KafkaListener(topics = "${cluster.bus.room.topic.kafka}",
-			concurrency = "1",
-			groupId = "")
+			concurrency = "1")
 	public void onKafkaMessage(Room chatMessage) {
 		log.info("onKafkaMessage {}",chatMessage);
 		subject.onNext(chatMessage);

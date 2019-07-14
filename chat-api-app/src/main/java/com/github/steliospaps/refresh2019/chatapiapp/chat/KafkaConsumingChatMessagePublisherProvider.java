@@ -20,8 +20,7 @@ public class KafkaConsumingChatMessagePublisherProvider implements ChatMessagePu
 	private Flowable<ChatMessage> observable= subject.serialize().share().toFlowable(BackpressureStrategy.BUFFER);
 
 	@KafkaListener(topics = "${cluster.bus.chat-message.topic.kafka}",
-			concurrency = "1",
-			groupId = "")
+			concurrency = "1")
 	public void onKafkaMessage(ChatMessage chatMessage) {
 		log.info("onKafkaMessage {}",chatMessage);
 		subject.onNext(chatMessage);
