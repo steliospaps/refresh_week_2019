@@ -1,5 +1,5 @@
 # Build
-## setup
+## developing 
 if you change the jdk don't forget to change the version in the Dockerfile
 ```bash
   ~/.jabba/bin/jabba install openjdk@1.11.0
@@ -20,6 +20,8 @@ https://github.com/springboot-testcontainer/springboot-testcontainer-mysql
 
 #Docker
 see https://github.com/spotify/dockerfile-maven
+
+to disable docker building use the switch -Ddockerfile.skip
 
 ```bash
 	./mvnw clean package

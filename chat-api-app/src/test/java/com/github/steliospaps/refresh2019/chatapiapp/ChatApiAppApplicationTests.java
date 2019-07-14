@@ -9,10 +9,12 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT, classes = {KafkaProducerConfigTest.class})
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("integration-test")
+@EmbeddedKafka(topics = { "${cluster.bus.chat-message.topic.kafka}", "${cluster.bus.room.topic.kafka}",
+		"${cluster.bus.user.topic.kafka}" }, brokerProperties = { "log.dir=target/out/embedded-kafka" })
 public class ChatApiAppApplicationTests {
-		
+
 	@Test
 	public void contextLoads() {
 	}

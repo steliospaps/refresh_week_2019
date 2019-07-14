@@ -1,7 +1,10 @@
 package com.github.steliospaps.refresh2019.chatapiapp.chat.db;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,11 +19,11 @@ import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.github.steliospaps.refresh2019.chatapiapp.KafkaProducerConfigTest;
-
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT, classes = {KafkaProducerConfigTest.class})
+@SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("integration-test")
+@EmbeddedKafka(topics = { "${cluster.bus.chat-message.topic.kafka}", "${cluster.bus.room.topic.kafka}",
+		"${cluster.bus.user.topic.kafka}" }, brokerProperties = { "log.dir=target/out/embedded-kafka" })
 public class JpaTest {
 	
 	@Autowired
