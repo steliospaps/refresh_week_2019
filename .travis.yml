@@ -4,4 +4,4 @@ jdk:
 
 script:
   - cd chat-api-app
-  - ./mvnw clean package	
+  - ./mvnw clean package -Ddockerfile.skip	
