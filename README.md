@@ -9,8 +9,6 @@ server : [![Build Status](https://travis-ci.org/steliospaps/refresh_week_2019.sv
    - Rooms can be created
    - Messages can be created in rooms, and all connected clients to said rooms are updated through subscriptions.
 ## TODO
-   - Dockerize.
-   - terraform ?
+   - terraform
    - automatic tests for server graphql.
    - automatic tests for react client.
-   - automatic integration tests

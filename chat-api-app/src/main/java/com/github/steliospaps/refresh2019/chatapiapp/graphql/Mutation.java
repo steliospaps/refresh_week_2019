@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.github.steliospaps.refresh2019.chatapiapp.chat.ChatMessageListener;
+import com.github.steliospaps.refresh2019.chatapiapp.chat.RoomListener;
+import com.github.steliospaps.refresh2019.chatapiapp.chat.UserListener;
 import com.github.steliospaps.refresh2019.chatapiapp.chat.db.ChatMessage;
 import com.github.steliospaps.refresh2019.chatapiapp.chat.db.ChatMessageRepository;
 import com.github.steliospaps.refresh2019.chatapiapp.chat.db.Room;
@@ -34,21 +36,31 @@ public class Mutation implements GraphQLMutationResolver,InitializingBean {
 	
 	@Autowired(required = false)
 	private ChatMessageListener[] chatMessageListeners = new ChatMessageListener[]{};
-	
+
+	@Autowired(required = false)
+	private RoomListener[] roomListeners = new RoomListener[]{};
+
+	@Autowired(required = false)
+	private UserListener[] userListeners = new UserListener[]{};
+
 	
 	
 	public Room createRoom(String name) {
-		return roomRepository
+		Room room = roomRepository
 				.save(Room.builder()
 						.name(name)
 						.build());
+		updateListeners(room);
+		return room;
 	}
 
 	public User createUser(String name) {
-		return userRepository
+		User user = userRepository
 				.save(User.builder()
 						.name(name)
 						.build());
+		updateListeners(user);
+		return user;
 	}
 
 	@SneakyThrows
@@ -75,6 +87,25 @@ public class Mutation implements GraphQLMutationResolver,InitializingBean {
 				l.onNewChatMessage(chatMessage);
 			}catch(Exception e) {
 				log.error("while publishing message "+chatMessage+" will ignore and continue",e);
+			}
+		}
+	}
+	
+	private void updateListeners(Room room) {
+		for(RoomListener l: roomListeners) {
+			try {
+				l.onNewRoom(room);
+			}catch(Exception e) {
+				log.error("while publishing "+room+" will ignore and continue",e);
+			}
+		}
+	}
+	private void updateListeners(User user) {
+		for(UserListener l: userListeners) {
+			try {
+				l.onNewUser(user);
+			}catch(Exception e) {
+				log.error("while publishing"+user+" will ignore and continue",e);
 			}
 		}
 	}
