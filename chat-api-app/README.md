@@ -2,9 +2,7 @@
 ## developing 
 if you change the jdk don't forget to change the version in the Dockerfile
 ```bash
-  ~/.jabba/bin/jabba install openjdk@1.11.0
-  export JAVA_HOME=$( ~/.jabba/bin/jabba which openjdk@1.11.0)
-  export PATH="$JAVA_HOME/bin:$PATH"
+  . ./setup_env.bash
   
   # bring mysql up. adminer can be accessed at:
   # http://localhost:48080/?server=db&username=user1&db=testdb
